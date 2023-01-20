@@ -1,5 +1,7 @@
 package com.tweteroo.api.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.tweteroo.api.dto.TweetsDto;
 
 import jakarta.persistence.Column;
@@ -22,6 +24,7 @@ public class Tweet {
     }
 
     @Id
+    @JsonProperty(access = Access.WRITE_ONLY)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
