@@ -13,34 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tweteroo.api.dto.TweetsDto;
 import com.tweteroo.api.model.Tweet;
-import com.tweteroo.api.model.User;
-import com.tweteroo.api.repository.TweetsRepository;
-import com.tweteroo.api.repository.UsersRepository;
+import com.tweteroo.api.service.TweetsService;
 
 @RestController
 @RequestMapping("/api/tweets")
 public class Tweets {
 
     @Autowired
-    private TweetsRepository repository;
-
-    @Autowired
-    private UsersRepository usersRepository;
+    private TweetsService service;
 
     @PostMapping
     public void newTweet(@RequestBody TweetsDto req) {
-        List<User> user = usersRepository.findByUsername(req.username());
-        repository.save(new Tweet(req, user.get(0).getAvatar()));
+        service.newTweet(req);
     }
 
     @GetMapping
-    public List<Tweet> getTweets() {
-        return repository.findAll();
+    public List<Tweet> getTweets(@RequestParam int page) {
+        return service.getTweets(page);
     }
 
     @GetMapping("/{username}")
     public List<Tweet> getTweetsFromUser(@PathVariable String username) {
-        return repository.findByUsername(username);
+        return service.getTweetsFromUser(username);
     }
 
 }
