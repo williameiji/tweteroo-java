@@ -3,6 +3,7 @@ package com.tweteroo.api.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +27,8 @@ public class TweetsService {
         return repository.save(new Tweet(dto, user.get(0).getAvatar()));
     }
 
-    public List<Tweet> getTweets(Pageable page) {
-        return repository.findAll(page).getContent();
+    public Page<Tweet> getTweets(Pageable page) {
+        return repository.findAll(page);
     }
 
     public List<Tweet> getTweetsFromUser(String username) {

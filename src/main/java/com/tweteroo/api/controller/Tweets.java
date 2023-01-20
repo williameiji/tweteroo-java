@@ -3,6 +3,7 @@ package com.tweteroo.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
@@ -32,7 +33,7 @@ public class Tweets {
     }
 
     @GetMapping
-    public List<Tweet> getTweets(
+    public Page<Tweet> getTweets(
             @PageableDefault(page = 0, size = 5, sort = "id", direction = Direction.DESC) Pageable page) {
         return service.getTweets(page);
     }
