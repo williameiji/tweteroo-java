@@ -7,8 +7,8 @@ POST /api/auth/sign-up
     - Route to login.
     - headers: {}
     - body: {
-	            username: 'Shazam',
-	            avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info"
+    		username: 'Shazam',
+		avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info"
             }
 ```
 
@@ -17,7 +17,7 @@ POST /api/tweets
     - Route to add a tweet.
     - headers: {}
     - body: {
-	            username: "Shazam",
+	        username: "Shazam",
                 tweet: "Algum texto aqui..."
             }
 ```
