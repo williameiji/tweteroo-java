@@ -1,5 +1,7 @@
 package com.tweteroo.api.dto;
 
-public record UsersDto(String username, String avatar) {
+import jakarta.validation.constraints.NotBlank;
+
+public record UsersDto(@NotBlank String username, @NotBlank String avatar) {
 
 }
