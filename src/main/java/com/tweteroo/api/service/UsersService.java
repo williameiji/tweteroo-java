@@ -13,7 +13,7 @@ public class UsersService {
     @Autowired
     private UsersRepository repository;
 
-    public void signUp(UsersDto dto) {
-        repository.save(new User(dto));
+    public User signUp(UsersDto dto) {
+        return repository.save(new User(dto));
     }
 }
